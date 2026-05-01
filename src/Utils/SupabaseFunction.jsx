@@ -1,4 +1,4 @@
-import { supabase } from "./Supabase"
+import { supabase } from "./Supabase";
 
 export const getAllHistory = async () => {
   const todos = await supabase.from("study-record").select("*");
