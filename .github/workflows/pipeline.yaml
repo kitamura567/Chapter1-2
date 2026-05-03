@@ -84,8 +84,7 @@ jobs:
 
       - name: Prepeare Google Application Credentials
         run: |
-          printf '%s' "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | base64 --decode > $HOME/private-key.json 
-
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | base64 --decode --ignore-garbage > $HOME/private-key.json
       - name: Deploy Firebase
         run: |
           export GOOGLE_APPLICATION_CREDENTIALS=$HOME/private-key.json
