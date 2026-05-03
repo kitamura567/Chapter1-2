@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./style.css";
 import { getAllHistory } from "./Utils/SupabaseFunction";
 import { supabase } from "./Utils/Supabase";
+import { render, screen } from "@testing-library/react";
 
 export const StudyTime = () => {
   const [text, setText] = useState("");
@@ -75,7 +76,6 @@ export const StudyTime = () => {
               <input value={text} onChange={onChangetext}></input>
               <p>学習時間</p>
               <input value={timeText} onChange={onChangeTimeText}></input>
-              <p>時間</p>
               <p>入力されている学習内容:{text}</p>
               <p>入力されている時間:{timeText}時間</p>
             </div>
