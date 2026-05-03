@@ -73,9 +73,17 @@ export const StudyTime = () => {
             <h1>学習記録一覧</h1>
             <div>
               <p>学習内容</p>
-              <input value={text} onChange={onChangetext}></input>
+              <input
+                value={text}
+                onChange={onChangetext}
+                value="学習内容"
+              ></input>
               <p>学習時間</p>
-              <input value={timeText} onChange={onChangeTimeText}></input>
+              <input
+                value={timeText}
+                onChange={onChangeTimeText}
+                value="学習時間"
+              ></input>
               <p>入力されている学習内容:{text}</p>
               <p>入力されている時間:{timeText}時間</p>
             </div>
