@@ -11,3 +11,25 @@
 データはsupabaseに送られます。
 削除ボタンをクリックすることで削除することができます。
 # 環境設定の方法
+```
+$ git clone https://github.com/kitamura567/Chapter1-2.git
+$ cd Chapter1-2
+```
+npmのインストール
+```
+$ npm install
+```
+.envで環境変数を設定してください
+```
+VITE_SUPABASE_URL="あなたのURL"
+VITE_SUPABASE_ANON_KEY="あなたのKEY"
+```
+# テストの実行
+```
+$ npm test
+```
+
+# 起動方法
+```
+$ npm run dev
+```
