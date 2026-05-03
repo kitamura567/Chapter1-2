@@ -84,7 +84,7 @@ jobs:
 
         - name: Prepeare Google Application Credentials
           run: |
-            echo ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }} | base64 --decode > $HOME/private-key.json
+            echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | base64 --decode > $HOME/private-key.json 
 
         - name: Deploy Firebase
           run: |
@@ -92,5 +92,5 @@ jobs:
             firebase experiments:enable webframeworks
             firebase deploy --only hosting
         - name: Remove private key
-          if: always()
+          if: always()   
           run: rm $HOME/private-key.json
