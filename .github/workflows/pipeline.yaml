@@ -74,22 +74,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Prepeare Google Application Credentials
-        run: |
-          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | base64 --decode --ignore-garbage > $HOME/private-key.json
       - name: Deploy Firebase
         run: |
           export GOOGLE_APPLICATION_CREDENTIALS=$HOME/private-key.json
           firebase experiments:disable webframeworks
-          firebase deploy --only hosting --project study-record-a2d90
-      - name: Remove private key
-        if: always()   
-        run: rm $HOME/private-key.json
+          firebase deploy --only hosting --project study-record-a2d90 --debug
