@@ -94,4 +94,4 @@ jobs:
         run: |
           export GOOGLE_APPLICATION_CREDENTIALS=$HOME/private-key.json
           firebase experiments:disable webframeworks
-          firebase deploy --only hosting:project-b5dd191c-6f01-49c6-af4 --project project-b5dd191c-6f01-49c6-af4 --debug
+          firebase deploy --only hosting:project-b5dd191c-6f01-49c6-af4 --project study-record-a2d90
