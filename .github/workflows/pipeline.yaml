@@ -78,8 +78,15 @@ jobs:
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
+      - name: Prepare Google Application Credentials
+        run: |
+         echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | base64 --decode --ignore-garbage > $HOME/private-key.json
+         if [ ! -s $HOME/private-key.json ]; then echo "Error: private-key.json is empty"; exit 1; fi
+
       - name: Deploy Firebase
         run: |
+          ls -R dist/
+          
           export GOOGLE_APPLICATION_CREDENTIALS=$HOME/private-key.json
           firebase experiments:disable webframeworks
           firebase deploy --only hosting --project study-record-a2d90 --debug
