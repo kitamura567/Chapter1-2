@@ -71,27 +71,13 @@ jobs:
           name: build-files
           path: dist/
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
         with:
-          node-version: 20
+          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
-      - name: Install Firebase CLI
+      - name: Setup Firebase CLI
         run: npm install -g firebase-tools
 
-      - name: Prepare Google Application Credentials
-        run: |
-          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | base64 --decode --ignore-garbage > $HOME/private-key.json
-
-      - name: Debug - File Structure Check
-        run: |
-          echo "--- Current Directory Content ---"
-          ls -F
-          echo "--- dist Directory Content ---"
-          ls -F dist/ || echo "dist folder missing!"
-
       - name: Deploy Firebase
-        run: |
-          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/private-key.json
-          firebase experiments:disable webframeworks
-          firebase deploy --only hosting:project-b5dd191c-6f01-49c6-af4 --project study-record-a2d90 --debug
+        run: firebase deploy --only hosting
