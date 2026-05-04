@@ -1,4 +1,4 @@
-name: Study Record App CI/CD Pipeline
+name: pipline
 
 on:
   push:
