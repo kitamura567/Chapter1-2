@@ -64,13 +64,8 @@ jobs:
         run: |
           echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | base64 -d > ${{ github.workspace }}/firebase-key.json
 
-      - name: Change Firebase project
-        run: ./node_modules/.bin/firebase use study-record-a2d90
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/firebase-key.json
-
       - name: Deploy to Firebase Hosting
-        run: ./node_modules/.bin/firebase deploy --project study-record-a2d90
+        run: ./node_modules/.bin/firebase deploy --only hosting --project study-record-a2d90
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/firebase-key.json
           FIREBASE_CLI_EXPERIMENTS: webframeworks
